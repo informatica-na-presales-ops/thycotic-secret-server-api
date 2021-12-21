@@ -1,0 +1,11 @@
+services:
+  pip-compile:
+    entrypoint:
+      - /bin/sh
+      - -c
+      - pip install pip-tools && pip-compile
+    image: ghcr.io/informatica-na-presales-ops/thycotic-secret-server-api
+    init: true
+    volumes:
+      - ./:/home/python/thycotic-secret-server-api
+    working_dir: /home/python/thycotic-secret-server-api
