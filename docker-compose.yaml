@@ -16,5 +16,11 @@ services:
       - /home/python/thycotic-secret-server-api/sync-ops-web-passwords.py
     environment:
       DB: (set in docker-compose.override.yaml)
+      SECRET_SERVER_FOLDER_ID: (set in docker-compose.override.yaml)
+      SECRET_SERVER_HOSTNAME: (set in docker-compose.override.yaml)
+      SECRET_SERVER_PASSWORD: (set in docker-compose.override.yaml)
+      SECRET_SERVER_SITE_ID: (set in docker-compose.override.yaml)
+      SECRET_SERVER_TEMPLATE_ID: (set in docker-compose.override.yaml)
+      SECRET_SERVER_USERNAME: (set in docker-compose.override.yaml)
     image: ghcr.io/informatica-na-presales-ops/thycotic-secret-server-api
     init: true
