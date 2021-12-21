@@ -20,4 +20,5 @@ ENV PATH="/home/python/venv/bin:${PATH}" \
 LABEL org.opencontainers.image.authors="William Jackson <wjackson@informatica.com>" \
       org.opencontainers.image.source="https://github.com/informatica-na-presales-ops/thycotic-secret-server-api"
 
+COPY --chown=python:python secret_server.py /home/python/thycotic-secret-server-api/secret_server.py
 COPY --chown=python:python sync-ops-web-passwords.py /home/python/thycotic-secret-server-api/sync-ops-web-passwords.py
