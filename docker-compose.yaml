@@ -9,3 +9,12 @@ services:
     volumes:
       - ./:/home/python/thycotic-secret-server-api
     working_dir: /home/python/thycotic-secret-server-api
+
+  sync-ops-web-passwords:
+    entrypoint:
+      - /home/python/venv/bin/python
+      - /home/python/thycotic-secret-server-api/sync-ops-web-passwords.py
+    environment:
+      DB: (set in docker-compose.override.yaml)
+    image: ghcr.io/informatica-na-presales-ops/thycotic-secret-server-api
+    init: true
