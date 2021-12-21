@@ -10,6 +10,15 @@ services:
       - ./:/home/python/thycotic-secret-server-api
     working_dir: /home/python/thycotic-secret-server-api
 
+  shell:
+    entrypoint:
+      - /bin/sh
+    image: ghcr.io/informatica-na-presales-ops/thycotic-secret-server-api
+    init: true
+    volumes:
+      - ./:/home/python/thycotic-secret-server-api
+    working_dir: /home/python/thycotic-secret-server-api
+
   sync-ops-web-passwords:
     entrypoint:
       - /home/python/venv/bin/python
