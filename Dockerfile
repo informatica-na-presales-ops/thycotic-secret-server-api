@@ -13,6 +13,7 @@ COPY --chown=python:python digicert-tls-rsa-sha256-2020-ca1.cer /home/python/thy
 RUN /bin/cat /home/python/thycotic-secret-server-api/digicert-tls-rsa-sha256-2020-ca1.cer >> /home/python/venv/lib/python3.10/site-packages/certifi/cacert.pem
 
 ENV PATH="/home/python/venv/bin:${PATH}" \
+    PYTHONDONTWRITEBYTECODE="1" \
     PYTHONUNBUFFERED="1" \
     TZ="Etc/UTC"
 
