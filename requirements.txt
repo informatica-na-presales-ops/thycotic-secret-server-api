@@ -16,7 +16,7 @@ idna==3.3
     # via requests
 notch==0.0.1
     # via -r requirements.in
-psycopg2==2.9.2
+psycopg2==2.9.3
     # via -r requirements.in
 pytz==2021.3
     # via apscheduler
