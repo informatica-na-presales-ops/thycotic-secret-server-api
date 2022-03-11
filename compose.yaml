@@ -1,10 +1,22 @@
 services:
-  pip-compile:
+  cleanup:
     entrypoint:
-      - /bin/sh
-      - -c
-      - pip install pip-tools && pip-compile
-    image: ghcr.io/informatica-na-presales-ops/thycotic-secret-server-api
+      - /bin/rm
+      - -fr
+      - dist
+      - src/thysecser.egg-info
+    image: ghcr.io/informatica-na-presales-ops/thysecser-dev
+    init: true
+    volumes:
+      - ./:/home/python/thycotic-secret-server-api
+    working_dir: /home/python/thycotic-secret-server-api
+
+  py-build:
+    entrypoint:
+      - /home/python/venv/bin/python
+      - -m
+      - build
+    image: ghcr.io/informatica-na-presales-ops/thysecser-dev
     init: true
     volumes:
       - ./:/home/python/thycotic-secret-server-api
@@ -13,23 +25,21 @@ services:
   shell:
     entrypoint:
       - /bin/sh
-    image: ghcr.io/informatica-na-presales-ops/thycotic-secret-server-api
+    image: ghcr.io/informatica-na-presales-ops/thysecser-dev
     init: true
     volumes:
       - ./:/home/python/thycotic-secret-server-api
     working_dir: /home/python/thycotic-secret-server-api
 
-  sync-ops-web-passwords:
+  twine-upload:
     entrypoint:
-      - /home/python/venv/bin/python
-      - /home/python/thycotic-secret-server-api/sync-ops-web-passwords.py
-    environment:
-      DB: (set in compose.override.yaml)
-      SECRET_SERVER_FOLDER_ID: (set in compose.override.yaml)
-      SECRET_SERVER_HOSTNAME: (set in compose.override.yaml)
-      SECRET_SERVER_PASSWORD: (set in compose.override.yaml)
-      SECRET_SERVER_SITE_ID: (set in compose.override.yaml)
-      SECRET_SERVER_TEMPLATE_ID: (set in compose.override.yaml)
-      SECRET_SERVER_USERNAME: (set in compose.override.yaml)
-    image: ghcr.io/informatica-na-presales-ops/thycotic-secret-server-api
+      - /home/python/venv/bin/twine
+      - upload
+      - --skip-existing
+      - --verbose
+      - dist/*
+    image: ghcr.io/informatica-na-presales-ops/thysecser-dev
     init: true
+    volumes:
+      - ./:/home/python/thycotic-secret-server-api
+    working_dir: /home/python/thycotic-secret-server-api
