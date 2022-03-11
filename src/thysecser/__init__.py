@@ -37,7 +37,9 @@ class SecretServerClient:
                 self.refresh_token()
             r = self.s.get(url, params=_params)
             log.debug(f'Sent request to {r.url}')
+            r.raise_for_status()
             payload = r.json()
+            log.debug(f'Response: {payload}')
             yield from payload.get('records')
             if payload.get('hasNext'):
                 _params.update({
