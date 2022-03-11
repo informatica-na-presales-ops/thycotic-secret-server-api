@@ -38,6 +38,9 @@ services:
       - --skip-existing
       - --verbose
       - dist/*
+    environment:
+      TWINE_PASSWORD:
+      TWINE_USERNAME:
     image: ghcr.io/informatica-na-presales-ops/thysecser-dev
     init: true
     volumes:
