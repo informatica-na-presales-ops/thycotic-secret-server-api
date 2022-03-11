@@ -29,6 +29,17 @@ class SecretServerClient:
             self.refresh_token()
         self.s.delete(url)
 
+    def get_secret(self, secret_id: int):
+        url = f'https://{self.hostname}/SecretServer/api/v1/secrets/{secret_id}'
+        if self.token_expired():
+            self.refresh_token()
+        r = self.s.get(url)
+        log.debug(f'Sent request to {r.url}')
+        r.raise_for_status()
+        payload = r.json()
+        log.debug(f'Response: {payload}')
+        return payload
+
     def get_secrets(self, params: dict = None):
         url = f'https://{self.hostname}/SecretServer/api/v1/secrets'
         _params = params or {}
