@@ -90,6 +90,7 @@ class SecretServerClient:
             'username': self.username,
         }
         r = self.s.post(url, data=data)
+        r.raise_for_status()
         payload = r.json()
         self.token = payload.get('access_token')
         self.token_expiration = datetime.datetime.now() + datetime.timedelta(seconds=payload.get('expires_in'))
