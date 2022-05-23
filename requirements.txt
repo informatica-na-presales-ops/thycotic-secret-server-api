@@ -8,7 +8,7 @@
 
 bleach==5.0.0
     # via readme-renderer
-build==0.7.0
+build==0.8.0
     # via -r requirements.in
 certifi==2021.10.8
     # via requests
