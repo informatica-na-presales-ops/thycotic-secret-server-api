@@ -25,20 +25,18 @@ docutils==0.18.1
 idna==3.3
     # via requests
 importlib-metadata==4.11.4
-    # via
-    #   keyring
-    #   twine
+    # via twine
 jeepney==0.8.0
     # via
     #   keyring
     #   secretstorage
-keyring==23.5.1
+keyring==23.6.0
     # via twine
 packaging==21.3
     # via build
 pep517==0.12.0
     # via build
-pkginfo==1.8.2
+pkginfo==1.8.3
     # via twine
 pycparser==2.21
     # via cffi
@@ -50,7 +48,7 @@ pyparsing==3.0.9
     # via packaging
 readme-renderer==35.0
     # via twine
-requests==2.27.1
+requests==2.28.0
     # via
     #   requests-toolbelt
     #   twine
