@@ -10,7 +10,7 @@ bleach==5.0.0
     # via readme-renderer
 build==0.8.0
     # via -r requirements.in
-certifi==2022.5.18.1
+certifi==2022.6.15
     # via requests
 cffi==1.15.0
     # via cryptography
@@ -24,7 +24,7 @@ docutils==0.18.1
     # via readme-renderer
 idna==3.3
     # via requests
-importlib-metadata==4.11.4
+importlib-metadata==4.12.0
     # via twine
 jeepney==0.8.0
     # via
