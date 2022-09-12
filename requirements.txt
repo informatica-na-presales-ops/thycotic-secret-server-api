@@ -32,7 +32,7 @@ jeepney==0.8.0
     # via
     #   keyring
     #   secretstorage
-keyring==23.9.0
+keyring==23.9.1
     # via twine
 more-itertools==8.14.0
     # via jaraco-classes
