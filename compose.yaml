@@ -30,19 +30,3 @@ services:
     volumes:
       - ./:/home/python/thycotic-secret-server-api
     working_dir: /home/python/thycotic-secret-server-api
-
-  twine-upload:
-    entrypoint:
-      - /home/python/venv/bin/twine
-      - upload
-      - --skip-existing
-      - --verbose
-      - dist/*
-    environment:
-      TWINE_PASSWORD:
-      TWINE_USERNAME:
-    image: ghcr.io/informatica-na-presales-ops/thysecser-dev
-    init: true
-    volumes:
-      - ./:/home/python/thycotic-secret-server-api
-    working_dir: /home/python/thycotic-secret-server-api
