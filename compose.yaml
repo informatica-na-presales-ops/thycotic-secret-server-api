@@ -11,6 +11,15 @@ services:
       - ./:/home/python/thycotic-secret-server-api
     working_dir: /home/python/thycotic-secret-server-api
 
+  pip-compile:
+    entrypoint:
+      - /home/python/venv/bin/pip-compile:py3.12
+    image: ghcr.io/williamjacksn/pip-tools
+    init: true
+    volumes:
+      - ./:/home/python/thycotic-secret-server-api
+    working_dir: /home/python/thycotic-secret-server-api
+
   py-build:
     entrypoint:
       - /home/python/venv/bin/python
