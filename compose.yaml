@@ -13,8 +13,8 @@ services:
 
   pip-compile:
     entrypoint:
-      - /home/python/venv/bin/pip-compile:py3.12
-    image: ghcr.io/williamjacksn/pip-tools
+      - /home/python/venv/bin/pip-compile
+    image: ghcr.io/williamjacksn/pip-tools:py3.12
     init: true
     volumes:
       - ./:/home/python/thycotic-secret-server-api
