@@ -4,6 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "thysecser"
+version = "2025.0"
 description = "Thycotic Secret Server API client"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -12,7 +13,6 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
 ]
-dynamic = ["version"]
 dependencies = [
     "requests>=2.32.3",
 ]
@@ -24,6 +24,3 @@ email = "wjackson@informatica.com"
 [project.urls]
 "Homepage" = "https://github.com/informatica-na-presales-ops/thycotic-secret-server-api"
 "Issues" = "https://github.com/informatica-na-presales-ops/thycotic-secret-server-api/issues"
-
-[tool.setuptools.dynamic]
-version.attr = "thysecser.__version__"

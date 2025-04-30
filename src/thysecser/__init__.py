@@ -3,8 +3,6 @@ import logging
 import os
 import requests
 
-__version__ = "2025.0"
-
 log = logging.getLogger(__name__)
 
 
