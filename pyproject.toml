@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "uv_build"
-requires = ["uv_build>=0.7.19,<0.8.0"]
+requires = ["uv-build>=0.9.11,<0.10.0"]
 
 [project]
 name = "thysecser"
@@ -24,3 +24,8 @@ email = "wjackson@informatica.com"
 [project.urls]
 "Homepage" = "https://github.com/informatica-na-presales-ops/thycotic-secret-server-api"
 "Issues" = "https://github.com/informatica-na-presales-ops/thycotic-secret-server-api/issues"
+
+[dependency-groups]
+dev = [
+    "uv-build>=0.9.11",
+]
