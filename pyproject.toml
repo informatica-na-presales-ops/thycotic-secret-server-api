@@ -7,7 +7,7 @@ name = "thysecser"
 version = "2025.0"
 description = "Thycotic Secret Server API client"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = "MIT"
 classifiers = [
     "Programming Language :: Python :: 3",
