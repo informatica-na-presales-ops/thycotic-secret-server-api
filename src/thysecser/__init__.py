@@ -14,7 +14,7 @@ class SecretServerClient:
         username: str | None = None,
         password: str | None = None,
         hostname: str | None = None,
-    ):
+    ) -> None:
         self.username = username
         if self.username is None:
             self.username = os.getenv("SECRET_SERVER_USERNAME")
