@@ -152,7 +152,7 @@ wheels = [
 
 [[package]]
 name = "thysecser"
-version = "2025.0"
+version = "2026.0"
 source = { editable = "." }
 dependencies = [
     { name = "requests" },
