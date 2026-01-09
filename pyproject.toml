@@ -27,5 +27,7 @@ email = "wjackson@informatica.com"
 
 [dependency-groups]
 dev = [
+    "ruff>=0.14.11",
+    "ty>=0.0.10",
     "uv-build>=0.9.11",
 ]
