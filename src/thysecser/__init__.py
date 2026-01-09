@@ -1,6 +1,7 @@
 import datetime
 import logging
 import os
+from collections.abc import Iterator
 
 import requests
 
@@ -24,13 +25,13 @@ class SecretServerClient:
         self.token_expiration = None
         self.s = requests.Session()
 
-    def delete_secret(self, secret_id: int):
+    def delete_secret(self, secret_id: int) -> None:
         url = f"https://{self.hostname}/SecretServer/api/v1/secrets/{secret_id}"
         if self.token_expired():
             self.refresh_token()
         self.s.delete(url)
 
-    def get_secret(self, secret_id: int):
+    def get_secret(self, secret_id: int) -> dict:
         url = f"https://{self.hostname}/SecretServer/api/v1/secrets/{secret_id}"
         if self.token_expired():
             self.refresh_token()
@@ -41,7 +42,7 @@ class SecretServerClient:
         log.debug(f"Response: {payload}")
         return payload
 
-    def get_secrets(self, params: dict = None):
+    def get_secrets(self, params: dict = None) -> Iterator[dict]:
         url = f"https://{self.hostname}/SecretServer/api/v1/secrets"
         _params = params or {}
         while True:
@@ -68,7 +69,7 @@ class SecretServerClient:
         secret_name: str,
         secret_username: str,
         secret_password: str,
-    ):
+    ) -> None:
         url = f"https://{self.hostname}/SecretServer/api/v1/secrets"
         if self.token_expired():
             self.refresh_token()
@@ -91,7 +92,7 @@ class SecretServerClient:
         r = self.s.post(url, json=payload)
         r.raise_for_status()
 
-    def refresh_token(self):
+    def refresh_token(self) -> None:
         url = f"https://{self.hostname}/SecretServer/oauth2/token"
         data = {
             "grant_type": "password",
@@ -107,7 +108,7 @@ class SecretServerClient:
         )
         self.s.headers.update({"Authorization": f"Bearer {self.token}"})
 
-    def token_expired(self):
+    def token_expired(self) -> bool:
         return (
             self.token_expiration is None
             or self.token_expiration < datetime.datetime.now()
