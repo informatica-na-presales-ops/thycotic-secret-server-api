@@ -31,3 +31,6 @@ dev = [
     "ty>=0.0.10",
     "uv-build>=0.9.11",
 ]
+
+[tool.ruff.lint]
+select = ["ANN", "E", "F", "FURB", "I", "PERF", "RUF", "S", "UP"]
