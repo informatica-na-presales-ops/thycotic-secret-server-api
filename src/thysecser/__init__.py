@@ -10,7 +10,10 @@ log = logging.getLogger(__name__)
 
 class SecretServerClient:
     def __init__(
-        self, username: str = None, password: str = None, hostname: str = None
+        self,
+        username: str | None = None,
+        password: str | None = None,
+        hostname: str | None = None,
     ):
         self.username = username
         if self.username is None:
@@ -42,7 +45,7 @@ class SecretServerClient:
         log.debug(f"Response: {payload}")
         return payload
 
-    def get_secrets(self, params: dict = None) -> Iterator[dict]:
+    def get_secrets(self, params: dict | None = None) -> Iterator[dict]:
         url = f"https://{self.hostname}/SecretServer/api/v1/secrets"
         _params = params or {}
         while True:
