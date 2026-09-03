@@ -106,13 +106,13 @@ class SecretServerClient:
         r.raise_for_status()
         payload = r.json()
         self.token = payload.get("access_token")
-        self.token_expiration = datetime.datetime.now() + datetime.timedelta(
-            seconds=payload.get("expires_in")
-        )
+        self.token_expiration = datetime.datetime.now(
+            tz=datetime.UTC
+        ) + datetime.timedelta(seconds=payload.get("expires_in"))
         self.s.headers.update({"Authorization": f"Bearer {self.token}"})
 
     def token_expired(self) -> bool:
         return (
             self.token_expiration is None
-            or self.token_expiration < datetime.datetime.now()
+            or self.token_expiration < datetime.datetime.now(tz=datetime.UTC)
         )
